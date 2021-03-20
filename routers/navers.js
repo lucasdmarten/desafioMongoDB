@@ -84,10 +84,10 @@ router.post('/create', verify, function(req, res) {
 });
 
 
-router.put('/update/:id', verify, async (req, res) => {
+router.put('/update/', verify, async (req, res) => {
     try {
         const navers = await Navers.findOneAndUpdate({
-            _id: req.params.id
+            username: req.params.username
             },
             { $set: { fullname: req.body.fullname }},
             {new: true},
@@ -96,6 +96,7 @@ router.put('/update/:id', verify, async (req, res) => {
                     res.send('error updating ');
                 } else {
                     console.log(newNaver);
+                    console.log("newnaver")
                     res.send(newNaver);
                 }
             }
@@ -106,15 +107,17 @@ router.put('/update/:id', verify, async (req, res) => {
 });
 
 
-router.delete('/delete/:id', verify, function(req, res) {
+router.delete('/delete/', verify, function(req, res) {
 Navers.findOneAndRemove({
-    _id: req.params._id
+    username: req.params.username
 }, function(err, naver) {
     if(err) {
     res.send('error removing')
     } else {
     console.log(naver);
-    res.status(204);
+    res.json({
+        message: "deletado"
+    });
     }
 });
 });

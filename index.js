@@ -35,4 +35,4 @@ app.use('/api/navers', naversRoute);
 app.use('/api/projetos', projetosRoute);
 
 
-app.listen(3000, () => console.log('running...'));
+app.listen(3000, () => console.log('running on 3000'));

@@ -57,7 +57,7 @@ router.put('/update/:name_projeto', async (req, res) => {
             name_projeto: req.params.name_projeto
             },
 
-            { $set: { username_navers: req.body.username_navers     }},
+            { $set: { name_projeto: req.body.name_projeto}},
             {new: true},
             (err, newNaver) =>{
                 if (err) {

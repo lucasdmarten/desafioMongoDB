@@ -60,16 +60,13 @@ PROJETOS:
 
  ```bash
  
- # Crie uma pasta
- $ mkdir navedexAPI_nodejs
- # Entre na pasta e clone o repositorio
- $ cd navedexAPI_nodejs
- $ git clone git@github.com:lucasdmarten/navedexAPI_nodejs.git
+ # Clonar o repostório
+ $ git clone git@github.com:lucasdmarten/desafioMongoDB.git
  # Entre na pasta do projeto
- $ cd navedexAPI_nodejs
+ $ cd desafioMongoDB
  # Instale todas as bibliotecas
  $ npm install --save-dev nodemon
- $ npm install express mongoose dotenv bcryptjs cookie-parser jsonwebtoken
+ $ npm install express mongoose dotenv bcryptjs cookie-parser jsonwebtoken @hapi/joi
  # Runserver...
  $ npm start
  ```
@@ -257,19 +254,10 @@ Escolha o nome do projeto pelo parametro na url e adicione o username do naver n
 }'
  ```
 
-### (DELETE) - Rota para alterar o projetos do usuario autenticado:
- ```bash
- # PUT - Alterar naver vinculado ao usuario autenticado
- http://localhost:4000/auth/delete_projeto/<int_projeto>
-
-$ curl --location --request DELETE 'http://localhost:4000/auth/delete_projeto/<id_projeto>' \
---header 'Cookie: acess-token=   substituirTOKEN   ; acess-token-id= substituirID'
- ```
 
 <br>
 
  <h2> Dificuldades:</h2>
- <h3>EM DESENVOLVIMENTO</h3>
- <!-- <p>Neste projeto fiquei com muita dificuldade em fazer a relação correta entre Naver e Projeto. Usei o model User do próprio Django mas customizado com email obrigatório. A partir deste model foi criado o objeto Projeto que possui relação ManyToMany com o MyUser, ou seja, um usuario pode participar de N projetos e cada projeto possui relação com N usuarios. Posteriormente foi criado o objeto Naver que está relacionado com usuario a partir do campo OneToOneField, e também projetos a partir do campo ManyToManyField, assim um naver está ligado a apenas UM usuario e o naver pode estar ligado com varios projetos.</p>
- <p>Problema: Não consigo relacionar um Naver a um Projeto e nem o Projeto ao Naver a partir do método POST, só na pagina de admin do Django. Acredito que seja problema na serialização dos models.</p> -->
+
+<li>Mudança do Mysql para mongo DB e trabalhar com um banco de dados noSQL, mas acredito que consegui concluir o objetivo</li>
  

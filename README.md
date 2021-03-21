@@ -128,7 +128,7 @@ PROJETOS:
  Aqui você pode adicionar participantes do projeto, no caso os navers.
  Escolha o nome do projeto pelo parametro na url e adicione o username do naver na body.
  ```bash
- POST http://localhost:3000/api/projects/add_naver/:name_projeto
+ POST http://localhost:3000/api/projects/add_naver/:name_project
  ```
  ![alt text](https://github.com/lucasdmarten/desafioMongoDB/blob/master/tutorial_inmsonia/NAVER_TO_PROJECT.png?raw=true)
 
@@ -147,7 +147,7 @@ PROJETOS:
   # O usuario poderá criar apenas um naver, e um naver está relacionado a n projetos
   GET  http://localhost:3000/api/navers
  ```
- ![alt text](https://github.com/lucasdmarten/desafioMongoDB/blob/master/tutorial_inmsonia/ADD_PROJECT2.png?raw=true)
+ ![alt text](https://github.com/lucasdmarten/desafioMongoDB/blob/master/tutorial_inmsonia/LIST_NAVERS.png?raw=true)
 
 
 

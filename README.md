@@ -173,9 +173,6 @@ Requer id do naver a ser deletado
  ```bash
  # DELETE - Deletar seu próprio naver vinculado ao usuario autenticado
  http://localhost:3000/api/navers/delete/
-
- $ curl --location --request GET 'http://localhost:3000/api/navers/delete/' \
---header 'Cookie: acess-token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MDU2Nzg1MmI5NmE4NTEyY2NhNzI1MTAiLCJpYXQiOjE2MTYyODAyNTR9.CRkeJJ2cX6P9OU6O129W1P50_Jstip6hPyv25h9mWLY; acess-token-id=j%3A%2260567852b96a8512cca72510%22; acess-token-username=mongoose'
  ```
 
 
@@ -188,45 +185,25 @@ Requer id do naver a ser deletado
 <h2 align=center> PROJETOS:</h2>
 <br>
 
-## Registre os projetos que o seu naver já participou
-### (STORE) - Rota para criar projetos:
- 
- ```bash
- # POST
- http://localhost:3000/api/projetos/create
-
- $ curl --location --request POST 'http://localhost:3000/api/projetos/create' \
---header 'Content-Type: application/json' \
---header 'Cookie: acess-token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MDU2Nzg1MmI5NmE4NTEyY2NhNzI1MTAiLCJpYXQiOjE2MTYyODAyNTR9.CRkeJJ2cX6P9OU6O129W1P50_Jstip6hPyv25h9mWLY; acess-token-id=j%3A%2260567852b96a8512cca72510%22; acess-token-username=mongoose' \
---data-raw '{
-    "name_projeto":"cantina"
-}'
- ```
-
 
 
  ### (INDEX) - Rota para listar todos os projetos:
  ```bash
- # GET 
- http://localhost:3000/api/projetos/
-
- $ curl --location --request GET 'http://localhost:3000/api/projetos' \
---header 'Cookie: acess-token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MDU2Nzg1MmI5NmE4NTEyY2NhNzI1MTAiLCJpYXQiOjE2MTYyODAyNTR9.CRkeJJ2cX6P9OU6O129W1P50_Jstip6hPyv25h9mWLY; acess-token-id=j%3A%2260567852b96a8512cca72510%22; acess-token-username=mongoose'
+ #
+ GET http://localhost:3000/api/projects/
  ```
- 
+![alt text](https://github.com/lucasdmarten/desafioMongoDB/blob/master/tutorial_inmsonia/LIST_PROJECTS.png?raw=true)
+
+
+
  ### (UPDATE) - Rota para alterar apenas os projetos do usuario autenticado:
  ```bash
- # PUT - Alterar nome projeto
+ # Alterar nome projeto
  # escolha o nome do projeto a ser alterado pela url, e na body o novo nome
- http://localhost:3000/api/projetos/update/:name_projeto  
-
- $ curl --location --request PUT 'localhost:3000/api/projetos/update/cantina' \
---header 'Content-Type: application/json' \
---header 'Cookie: acess-token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MDU2Nzg1MmI5NmE4NTEyY2NhNzI1MTAiLCJpYXQiOjE2MTYyODAyNTR9.CRkeJJ2cX6P9OU6O129W1P50_Jstip6hPyv25h9mWLY; acess-token-id=j%3A%2260567852b96a8512cca72510%22; acess-token-username=mongoose' \
---data-raw '{
-    "name_projeto":"mongoose projeto"
-}'
+ PUT http://localhost:3000/api/projetos/update/:name_projects
  ```
+ ![alt text](https://github.com/lucasdmarten/desafioMongoDB/blob/master/tutorial_inmsonia/UPDATE_PROJECT.png?raw=true)
+
 
 
 <br>

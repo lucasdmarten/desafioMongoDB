@@ -62,7 +62,8 @@ router.put('/update/:name_project', async (req, res) => {
                 if (err) {
                     res.send('error updating ');
                 } else {
-                    res.send('update ');
+                    console.log(newNaver)
+                    res.json("changed to: "+req.body.name_project);
                 }
             }
         );

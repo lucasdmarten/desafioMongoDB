@@ -1,6 +1,6 @@
 const router = require('express').Router();
-const Navers = require('../model/Naver');
-const Projeto = require('../model/Projeto');
+const Navers = require('../model/Navers');
+const Projects = require('../model/Projects');
 const verify = require('./verifyToken');
 
 
@@ -22,21 +22,22 @@ router.get('/show/:username', verify, function(req, res) {
         if (err) {
             console.log(err)
         } else {
-            Projeto.find({username_navers:req.params.username}).exec((err,projetos)=>{
-                console.log(projetos[0])
-                list_projetos = []
-                for (let i = 0; i < projetos.length; i++) {
-                    list_projetos.push([
-                        {name_projeto:projetos[i].name_projeto,
-                        navers: projetos[i].username_navers
+            Projects.find({username_navers:req.params.username}).exec((err,projects)=>{
+                console.log(projects[0])
+                list_projects = []
+                for (let i = 0; i < projects.length; i++) {
+                    list_projects.push([
+                        {name_projects:projects[i].name_project,
+                        navers: projects[i].username_navers
                         }
                     ])
                 }
+                console.log(naver[0])
                 res.json({
                     username:naver[0].username,
                     fullname:naver[0].fullname,
-                    projetos: {
-                        list_projetos
+                    projects: {
+                        list_projects
                     }
                     
                 })
@@ -69,8 +70,7 @@ router.post('/create', verify, function(req, res) {
     newNaver.admission_date = req.body.admission_date;
     newNaver.job_role = req.body.job_role;
 
-    console.log("ASODOASDJKO")
-    console.log(newNaver.projetos)
+    console.log(newNaver.projects)
     newNaver.save(function(err, naver) {
         if(err) {
             console.log(newNaver)
@@ -95,8 +95,6 @@ router.put('/update/', verify, async (req, res) => {
                 if (err) {
                     res.send('error updating ');
                 } else {
-                    console.log(newNaver);
-                    console.log("newnaver")
                     res.send(newNaver);
                 }
             }
@@ -116,7 +114,7 @@ Navers.findOneAndRemove({
     } else {
     console.log(naver);
     res.json({
-        message: "deletado"
+        message: "deleted"
     });
     }
 });

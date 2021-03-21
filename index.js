@@ -5,7 +5,7 @@ const cookieParser  = require('cookie-parser');
 // import Routes
 const authRoute = require('./routers/auth');
 const naversRoute = require('./routers/navers');
-const projetosRoute = require('./routers/projetos');
+const projectsRoute = require('./routers/projects');
 // const testeRoute = require('./routers/teste');
 
 const dotenv = require('dotenv');
@@ -32,7 +32,7 @@ app.use(cookieParser());
 
 app.use('/api/user', authRoute);
 app.use('/api/navers', naversRoute);
-app.use('/api/projetos', projetosRoute);
+app.use('/api/projects', projectsRoute);
 
 
 app.listen(3000, () => console.log('running on 3000'));

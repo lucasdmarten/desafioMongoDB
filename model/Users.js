@@ -1,39 +1,30 @@
 const mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 
-const navers = new Schema({
+const users = new Schema({
     username: {
         type: String,
         required: true,
-        unique: true,
         min: 6,
         max: 255
     },
-    fullname: {
+    email: {
         type: String,
         required: true,
+        min: 6,
         max: 255
     },
-    birth_date: {
-        type: Date,
-        default: null
-    },
-    admission_date: {
-        type: Date,
-        default: null
-    },
-    job_role: {
+    password: {
         type: String,
-        default: null,
-        max: 255
+        required: true,
+        min: 6,
+        max: 1024
     },
     created_at: {
         type: Date,
         default: Date.now
     }
-    
 });
 
 
-module.exports = mongoose.model('Naver', navers);
-
+module.exports = mongoose.model('Users', users);

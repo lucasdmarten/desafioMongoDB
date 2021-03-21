@@ -45,9 +45,11 @@ PROJETOS:
 
     $ nano ./.env
 
-    DB_CONNECT = mongodb+srv://lucasdmarten:i1i2i3i4@cluster0.oy7kt.mongodb.net/myFirstDatabase?retryWrites=true&w=majority
+    # https://www.mongodb.com/
+    DB_CONNECT = mongodb+srv://LOGIN:SENHA@cluster0.oy7kt.mongodb.net/NAMEDATABASE?retryWrites=true&w=majority
     TOKEN_SECRET = ASJDLKASDJ
     JWT_COOKIE_EXPIRES_IN=90
+
 
 #
 
@@ -81,20 +83,10 @@ PROJETOS:
 <p>Registro de usuario:</p>
 
  ```bash
- # POST
- http://localhost:3000/api/register/
-
-
- $ curl --location --request POST 'http://localhost:3000/api/user/register/' \
---header 'Content-Type: application/json' \
---header 'Cookie: acess-token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MywiaWF0IjoxNjE2Mjc2ODgwLCJleHAiOjE2MjQwNTI4ODB9.Etg05msaSnq5XY_sjftTRBZZye8mO7vxfL0yMa-LQ8c; acess-token-id=3' \
---data-raw '{
-    "username": "mongoose",
-    "email":"mongoose@note.com",
-    "password":"123"
-}' 
-
+ POST http://localhost:3000/api/register/
  ```
+ ![alt text](https://github.com/lucasdmarten/desafioMongoDB/blob/master/tutorial_inmsonia/REGISTER.png?raw=true)
+
 <br>
 
 ### Rota para login:
@@ -161,7 +153,7 @@ PROJETOS:
  ### (SHOW) - Rota para mostrar o naver e os projetos que ele participa:
  ```bash
  # O usuario poderá criar apenas um naver, e um naver está relacionado a n projetos
- http://localhost:3000/api/navers/show/:id
+ http://localhost:3000/api/navers/show/:username
 
  $ curl --location --request GET 'http://localhost:3000/api/navers/show/username' \
 --header 'Cookie: acess-token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MDU2Nzg1MmI5NmE4NTEyY2NhNzI1MTAiLCJpYXQiOjE2MTYyODAyNTR9.CRkeJJ2cX6P9OU6O129W1P50_Jstip6hPyv25h9mWLY; acess-token-id=j%3A%2260567852b96a8512cca72510%22; acess-token-username=mongoose'

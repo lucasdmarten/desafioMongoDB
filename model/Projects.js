@@ -1,8 +1,8 @@
 var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 
-var projetos = new Schema({
-    name_projeto: {
+var projects = new Schema({
+    name_project: {
         type: String,
         require: true,
         unique: true
@@ -20,4 +20,4 @@ var projetos = new Schema({
     }
 });
 
-module.exports = mongoose.model('Projeto', projetos);
+module.exports = mongoose.model('Projects', projects);

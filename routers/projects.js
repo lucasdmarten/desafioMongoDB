@@ -1,28 +1,27 @@
 const router = require('express').Router();
-const Projeto = require('../model/Projeto');
-const User = require('../model/User');
-const Naver = require('../model/Naver');
+const Projects = require('../model/Projects');
+const Users = require('../model/Users');
+const Navers = require('../model/Navers');
 const verify = require('./verifyToken');
 
 
 router.post('/create', verify, async (req,res)=>{
-    var newProjeto = new Projeto();
+    var newProject = new Projects();
 
-    newProjeto.name_projeto = req.body.name_projeto;
-    newProjeto.username_navers = [req.body.username_navers]
-    // console.log(newProjeto.navers)
-    newProjeto.save(function(err, projeto) {
+    newProject.name_project = req.body.name_project;
+    newProject.username_navers = [req.body.username_navers]
+    newProject.save(function(err, project) {
         if(err) {
-            console.log(newProjeto)
+            console.log(newProject)
             console.log(err)
             res.send({
                 message: "error",
                 err
             });
         } else {
-            console.log(projeto);
+            console.log(project);
             res.json({
-                projeto
+                project
             });
         }
     });
@@ -30,34 +29,34 @@ router.post('/create', verify, async (req,res)=>{
 
 
 router.get('/', verify, (req,res)=>{
-    Projeto.find({})
-      .exec(function(err, projetos) {
+    Projects.find({})
+      .exec(function(err, projects) {
         if(err) {
           res.send('error occured')
         } else {
-          console.log(projetos);
-          res.json(projetos);
+          console.log(projects);
+          res.json(projects);
         }
       });
 });
 
 
-router.get('/:name_projeto', verify, (req,res)=>{
-    const {name_projeto} = req.params;
-    Projeto.findOne({ name_projeto:  name_projeto}).then(function (projeto) {
+router.get('/:name_project', verify, (req,res)=>{
+    const {name_project} = req.params;
+    Projects.findOne({ name_project:  name_project}).then(function (project) {
         res.status(200).json({
-            projeto: projeto
+            project: project
         });
     });
 });
 
-router.put('/update/:name_projeto', async (req, res) => {
+router.put('/update/:name_project', async (req, res) => {
     try {
-        const navers = await Projeto.findOneAndUpdate({
-            name_projeto: req.params.name_projeto
+        const navers = await Projects.findOneAndUpdate({
+            name_project: req.params.name_project
             },
 
-            { $set: { name_projeto: req.body.name_projeto}},
+            { $set: { name_project: req.body.name_project}},
             {new: true},
             (err, newNaver) =>{
                 if (err) {
@@ -72,10 +71,10 @@ router.put('/update/:name_projeto', async (req, res) => {
     }
 });
 
-router.put('/add_naver/:name_projeto', (req, res) => {
+router.put('/add_naver/:name_project', (req, res) => {
     try {
-        const navers = Projeto.findOneAndUpdate({
-            name_projeto: req.params.name_projeto
+        const navers = Projects.findOneAndUpdate({
+            name_project: req.params.name_project
             },
             { $push: { username_navers: req.body.username_navers     }},
             { upsert: true, new: true },
@@ -83,7 +82,7 @@ router.put('/add_naver/:name_projeto', (req, res) => {
                 if (err) {
                     res.send('error updating ');
                 } else {
-                    res.send('update ');
+                    res.send(newNaver);
                 }
             }
         );

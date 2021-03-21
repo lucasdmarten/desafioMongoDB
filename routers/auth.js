@@ -1,6 +1,6 @@
 const router = require('express').Router();
 const { required } = require('@hapi/joi');
-const User = require('../model/User');
+const User = require('../model/Users');
 const {registerValidation, loginValidation} = require('../validation')
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
@@ -22,12 +22,15 @@ router.post('/register',  async (req,res) => {
     if (emailExist) return res.status(400).json({
         message: 'Email already exists'
     });
+    console.log("NEW USER")
 
     // HASH PASSWORDS
+    console.log(req.body.password)
     const salt = await bcrypt.genSalt(10);
     const hashPassword = await bcrypt.hash(req.body.password, salt);
-
-    const user = new User({
+    console.log("mid")
+    console.log(hashPassword)
+    const user = await new User({
         username: req.body.username,
         email: req.body.email,
         password: hashPassword
@@ -58,7 +61,6 @@ router.post('/login', async (req,res) => {
     if (!validPass) return res.status(400).json({
         message: 'Invalid password!'
     });
-    console.log("userid embaixo")
 
     console.log(user._id)
     // CREATE TOKEN

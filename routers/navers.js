@@ -87,7 +87,7 @@ router.post('/create', verify, function(req, res) {
 router.put('/update/', verify, async (req, res) => {
     try {
         const navers = await Navers.findOneAndUpdate({
-            username: req.params.username
+            username: req.cookies['acess-token-username']
             },
             { $set: { fullname: req.body.fullname }},
             {new: true},

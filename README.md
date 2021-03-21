@@ -154,26 +154,19 @@ PROJETOS:
  ### (SHOW) - Rota para mostrar o naver e os projetos que ele participa:
  ```bash
  # O usuario poderá criar apenas um naver, e um naver está relacionado a n projetos
- http://localhost:3000/api/navers/show/:username
-
- $ curl --location --request GET 'http://localhost:3000/api/navers/show/username' \
---header 'Cookie: acess-token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MDU2Nzg1MmI5NmE4NTEyY2NhNzI1MTAiLCJpYXQiOjE2MTYyODAyNTR9.CRkeJJ2cX6P9OU6O129W1P50_Jstip6hPyv25h9mWLY; acess-token-id=j%3A%2260567852b96a8512cca72510%22; acess-token-username=mongoose'
-
+ GET http://localhost:3000/api/navers/show/:username
  ```
+  ![alt text](https://github.com/lucasdmarten/desafioMongoDB/blob/master/tutorial_inmsonia/SHOW_NAVER.png?raw=true)
+
  
  ### (UPDATE) - Rota para alterar o naver do usuario autenticado:
  Requer o field id_projeto e id_naver na body
  ```bash
- # PUT - Alterar naver vinculado ao usuario autenticado
- http://localhost:3000/api/naver/update/
-
- $ curl --location --request PUT 'localhost:3000/api/navers/update/' \
---header 'Content-Type: application/json' \
---header 'Cookie: acess-token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MDU2Nzg1MmI5NmE4NTEyY2NhNzI1MTAiLCJpYXQiOjE2MTYyODAyNTR9.CRkeJJ2cX6P9OU6O129W1P50_Jstip6hPyv25h9mWLY; acess-token-id=j%3A%2260567852b96a8512cca72510%22; acess-token-username=mongoose' \
---data-raw '{
-    "fullname":"mongoose fullname"
-}'
+ # Alterar naver vinculado ao usuario autenticado
+ PUT http://localhost:3000/api/naver/update/
  ```
+   ![alt text](https://github.com/lucasdmarten/desafioMongoDB/blob/master/tutorial_inmsonia/SHOW_NAVER.png?raw=true)
+
 
 ### (DELETE) - Rota para deletar o naver do usuario autenticado:
 Requer id do naver a ser deletado

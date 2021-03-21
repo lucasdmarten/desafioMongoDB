@@ -93,18 +93,9 @@ PROJETOS:
 <p>Aqui sera feito login com base no cadastro feito préviamente, e será liberado o token access.</p>
 
  ```bash
- # POST
- http://localhost:3000/api/user/login/
- 
- Exemplo:
- $ curl --location --request POST 'http://localhost:3000/api/user/login/' \
---header 'Content-Type: application/json' \
---header 'Cookie: acess-token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MDU2Nzg1MmI5NmE4NTEyY2NhNzI1MTAiLCJpYXQiOjE2MTYyNzk3NjZ9.ICNOYOYfT5tqEaiBPbXO3J80BDVfvd6vIu6MlO8BKK4; acess-token-id=j%3A%2260567852b96a8512cca72510%22; acess-token-username=mongoose' \
---data-raw '{
-    "email":"mongoose@note.com",
-    "password":"123"
-}'
+ POST http://localhost:3000/api/user/login/
  ```
+ ![alt text](https://github.com/lucasdmarten/desafioMongoDB/blob/master/tutorial_inmsonia/LOGIN.png?raw=true)
 
  
 <br>
@@ -117,39 +108,49 @@ PROJETOS:
 <br>
 <br>
 
+<h1 align=center>START:</h1>
+
+### Comece criando seu naver!
+### (STORE) - Rota para criar navers:
+ ```bash
+ POST http://localhost:3000/api/navers/create
+ ```
+ ![alt text](https://github.com/lucasdmarten/desafioMongoDB/blob/master/tutorial_inmsonia/ADD_NAVER.png?raw=true)
+
+### (STORE) - Rota para criar projetos:
+ ```bash
+ POST http://localhost:3000/api/projects/create
+ ```
+ ![alt text](https://github.com/lucasdmarten/desafioMongoDB/blob/master/tutorial_inmsonia/ADD_PROJECT.png?raw=true)
+ ![alt text](https://github.com/lucasdmarten/desafioMongoDB/blob/master/tutorial_inmsonia/ADD_PROJECT2.png?raw=true)
+
+### (STORE) - Rota para adicionar naver aos projetos:
+ Aqui você pode adicionar participantes do projeto, no caso os navers.
+ Escolha o nome do projeto pelo parametro na url e adicione o username do naver na body.
+ ```bash
+ POST http://localhost:3000/api/projects/add_naver/:name_projeto
+ ```
+ ![alt text](https://github.com/lucasdmarten/desafioMongoDB/blob/master/tutorial_inmsonia/NAVER_TO_PROJECT.png?raw=true)
+
+
+<br>
+<br>
+<br>
 
 <br>
 <h2 align=center> NAVERS:</h2>
 <br>
 
 
-### Comece criando seu naver!
-### (STORE) - Rota para criar navers:
- ```bash
- # POST
- http://localhost:3000/api/navers/create
-
- Exemplo:
- $ curl --location --request POST 'http://localhost:3000/api/navers/create/' \
---header 'Content-Type: application/json' \
---header 'Cookie: acess-token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MDU2Nzg1MmI5NmE4NTEyY2NhNzI1MTAiLCJpYXQiOjE2MTYyODAyNTR9.CRkeJJ2cX6P9OU6O129W1P50_Jstip6hPyv25h9mWLY; acess-token-id=j%3A%2260567852b96a8512cca72510%22; acess-token-username=mongoose' \
---data-raw '{
-    "fullname":"mongoose",
-    "birth_date":"1994-10-27",
-    "admission_date":"2020-04-08",
-    "job_role":"DB"
-}'
- ```
-
  ### (INDEX) - Rota para mostrar o naver criado pelo usuario autenticado:
  ```bash
- # O usuario poderá criar apenas um naver, e um naver está relacionado a n projetos
-  
-  # GET
-  http://localhost:3000/api/navers
-  $ curl --location --request GET 'http://localhost:3000/api/navers' \
---header 'Cookie: acess-token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MDU2Nzg1MmI5NmE4NTEyY2NhNzI1MTAiLCJpYXQiOjE2MTYyODAyNTR9.CRkeJJ2cX6P9OU6O129W1P50_Jstip6hPyv25h9mWLY; acess-token-id=j%3A%2260567852b96a8512cca72510%22; acess-token-username=mongoose'
+  # O usuario poderá criar apenas um naver, e um naver está relacionado a n projetos
+  GET  http://localhost:3000/api/navers
  ```
+ ![alt text](https://github.com/lucasdmarten/desafioMongoDB/blob/master/tutorial_inmsonia/ADD_PROJECT2.png?raw=true)
+
+
+
  ### (SHOW) - Rota para mostrar o naver e os projetos que ele participa:
  ```bash
  # O usuario poderá criar apenas um naver, e um naver está relacionado a n projetos
@@ -209,19 +210,7 @@ Requer id do naver a ser deletado
 }'
  ```
 
-Aqui você pode adicionar participantes do projeto, no caso os navers.
-Escolha o nome do projeto pelo parametro na url e adicione o username do naver na body.
-  ```bash
-# PUT
- http://localhost:3000/api/projetos/add_naver/:name_projeto
 
- $ curl --location --request PUT 'http://localhost:3000/api/projetos/add_naver/cantina' \
---header 'Content-Type: application/json' \
---header 'Cookie: acess-token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MDU2Nzg1MmI5NmE4NTEyY2NhNzI1MTAiLCJpYXQiOjE2MTYyODAyNTR9.CRkeJJ2cX6P9OU6O129W1P50_Jstip6hPyv25h9mWLY; acess-token-id=j%3A%2260567852b96a8512cca72510%22; acess-token-username=mongoose' \
---data-raw '{
-    "username_navers":["mongoose","username"]
-}'
- ```
 
  ### (INDEX) - Rota para listar todos os projetos:
  ```bash
